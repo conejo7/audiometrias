@@ -1,0 +1,1069 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <!-- <script src="https://code.highcharts.com/highcharts.js"></script>-->
+    <script src="highcharts.js"></script>
+    <!--<script src="https://code.highcharts.com/modules/exporting.js"></script>-->
+    <script src="exporting.js"></script>
+    <!--<script src="https://code.highcharts.com/modules/export-data.js"></script>-->
+    <script src="export-data.js"></script>
+    <!--<script src="https://rawgithub.com/highcharts/draggable-points/master/draggable-points.js"></script>-->
+    <!--<script src="draggable-points.js"></script>-->
+    <!--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
+    <script src="jquery-3.1.1.min.js"></script> 
+
+    <!--<script src="https://code.highcharts.com/modules/data.js"></script>-->
+     
+
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="data.js"></script>
+    <script src="https://rawgit.com/Ondkloss/draggable-points/dynamic-drag-and-drag-steps/draggable-points.js"></script>
+    <script src="https://rawgithub.com/highslide-software/draggable-points/master/draggable-points.js"></script>
+    <script src="https://rawgithub.com/highcharts/draggable-points/master/draggable-points.js"></script>
+    <script src="https://code.highcharts.com/modules/treemap.js"></script>
+
+    <!--  <div id="container3" style="height: 400px"></div>
+     <button id="button" >Add series</button>
+    <div id="table-out" style="border: 1px dotted red">
+    
+ 
+ 
+ </div>-->
+
+
+    <center>
+        <table border="0">
+
+
+            <TR colspan="4"> <h1>AUDIOMETRÍA</h1></TR>
+
+            <tr>
+
+                <td rowspan="3"><div id="container" style="min-width: 540px; height: 400px; max-width: 700px; margin: 0 auto"></div></td>
+                <th>OPCIONES</th>
+                <td rowspan="3"><div id="container33" style="min-width: 540px; height: 400px; max-width: 700px; margin: 0 auto"></div></td>
+                <th>OPCIONES </th>
+            </tr>
+
+            <tr>
+                <td>
+                    <center>
+                        <button id="botonuno" style="text-decoration: sss;
+                                padding: 12px;
+                                font-weight: 600;
+                                font-size: 10px;
+                                color: #ffffff;
+                                background-color: #1883ba;
+                                border-radius: 6px;
+                                border: 2px solid #0016b0;">Prueba Dos OD</button>
+                        <br></br>
+                        <br></br>
+
+                        <br></br>
+                        <br></br>
+                        <button id="bajaruno" style="text-decoration: sss;
+                                padding: 12px;
+                                font-weight: 600;
+                                font-size: 10px;
+                                color: #ffffff;
+                                background-color: #1883ba;
+                                border-radius: 6px;
+                                border: 2px solid #0016b0;">Remover punto</button>
+                        <br></br>
+                        <br></br>
+                        <button id="updateLegend" style="text-decoration: sss;
+                                padding: 12px;
+                                font-weight: 600;
+                                font-size: 10px;
+                                color: #ffffff;
+                                background-color: #1883ba;
+                                border-radius: 6px;
+                                border: 2px solid #0016b0;">Ocultar Leyendas</button>
+                    </center>
+                </td>
+                <td>
+                    <center>
+                        <button id="botonuno1" style="text-decoration: sss;
+                                padding: 12px;
+                                font-weight: 600;
+                                font-size: 10px;
+                                color: #ffffff;
+                                background-color: #1883ba;
+                                border-radius: 6px;
+                                border: 2px solid #0016b0;">Prueba Dos OI</button>
+                        <br></br>
+                        <br></br>
+
+                        <br></br>
+                        <br></br>
+                        <button id="bajaruno1" style="text-decoration: sss;
+                                padding: 12px;
+                                font-weight: 600;
+                                font-size: 10px;
+                                color: #ffffff;
+                                background-color: #1883ba;
+                                border-radius: 6px;
+                                border: 2px solid #0016b0;">Remover punto</button>
+                        <br></br>
+                        <br></br>
+                        <button id="updateLegend1" style="text-decoration: sss;
+                                padding: 12px;
+                                font-weight: 600;
+                                font-size: 10px;
+                                color: #ffffff;
+                                background-color: #1883ba;
+                                border-radius: 6px;
+                                border: 2px solid #0016b0;">Ocultar Leyendas</button>
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <br></br>
+    <br></br>
+    <br></br>
+    <script type="text/javascript">
+
+        //oido derecho
+
+        var serieActual = 0;
+        var ser = 0;
+        //    var chart=Highcharts.chart('container', {
+        var chart1 = Highcharts.chart('container', {
+            chart: {
+                renderTo: 'container',
+                type: 'line', //para el gráfico sino se hace curvas
+                defaultSeriesType: 'spline',
+                events: {
+                    click: function (e) {
+
+                        var x = e.xAxis[0].value,
+                                y = e.yAxis[0].value,
+                                series = this.series[serieActual];
+                        x = Math.ceil(x / 125) * 125;    //5
+                        y = Math.ceil(y / 5) * 5;
+                        
+                      //  var min = series.data[series.data.length - 1].x;
+                   //     var dd= series[serieActual].data;
+                        
+                        if (x == 125 || x == 250 || x == 500 || x == 750 || x == 1000 || x == 1500 || x == 2000 || x == 2500 || x == 3000 || x == 3500 || x == 4000 || x == 4500 || x == 5000 || x == 5500 || x == 6000 || x == 6500 || x == 7000 || x == 7500 || x == 8000 || x == 8500 || x == 9000 || x == 9500 || x == 10000) {
+                            series.addPoint([x, y]);
+                        } else {
+                            //   alert('Error jaja..x2');
+                        }
+                    }
+                }
+            },
+            title: {
+                text: 'PRUEBA - OIDO DERECHO'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                //   minPadding: 0.2,
+                // maxPadding: 0.2,
+                //  maxZoom: 60,
+                min: 125,
+                max: 10000,
+                tickmarkPlacement: 'on',
+                crosshair: {
+                    snap: true
+                },
+                resize: {
+                    enabled: true
+                },
+                allowDecimals: false, // evita unidades decimales
+                opposite: true, //PARA PONER # ARRIBA :)
+                title: {
+                    text: 'FUERZA (HZ)'
+                },
+                //   tickmarkPlacement: 'on',
+                lineWidth: 2,
+                gridLineColor: '#197F07',
+                gridLineWidth: 1,
+                // categories: ['125', '250', '500', '1000', '1500', '2000', '3000', '4000', '6000', '8000', '10000', '']
+              tickInterval: 1000
+            //tickPositions: [125, 250, 500, 1000, 1500, 2000, 3000, 4000, 6000, 8000, 10000]
+                        //   gridLineWidth: 1,
+                        // minPadding: 0.2,
+                        //maxPadding: 0.2,
+                        // maxZoom: 60
+            },
+            yAxis: {
+
+                minPadding: 0.2,
+                maxPadding: 0.2,
+                maxZoom: 60,
+                min: 0,
+                max: 120,
+                allowDecimals: false,
+                title: {
+                    text: 'DECIBELES (DBHL)'
+                },
+                crosshair: {
+                    snap: true
+                },
+                resize: {
+                    enabled: true
+                },
+                lineWidth: 0,
+                gridLineColor: '#197F07',
+                gridLineWidth: 1,
+                // tickAmount: 9,
+
+                //   min: 0,
+                // max: 120,
+                //alignTicks: false,
+                // tickInterval: 5,
+
+                tickPositions: [120, 110, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0, -10]
+                        //categories: ['100', '90', '80', '70', '60', '50', '40', '30', '20', '10', '0']
+                        //minPadding: 0.2,
+                        //maxPadding: 0.2,
+                        // maxZoom: 60,
+
+            },
+            legend: {
+                enabled: true,
+                // align: 'left',
+                //verticalAlign: 'top',
+                borderWidth: 0
+
+            },
+            plotOptions: {
+                series: {
+                    //    pointPlacement: 'between',
+                    lineWidth: 1,
+                    allowPointSelect: true, // ojo
+                    dataLabels: {
+                        enabled: true   /// para saber el numero del punto
+                    },
+                    marker: {
+                        fillColor: '#FFFFFF',
+                        lineWidth: 2,
+                        lineColor: null
+                    },
+                    point: {
+                        events: {
+
+                            click: function () {
+                                if (this.series.data.length > 1) {
+                                    this.remove();
+                                }
+                            },
+                            drag: function (e) {
+                                $('#drag').html(
+                                        'Dragging <b>' + this.series.name + '</b>, <b>' + this.category + '</b>' + Math.ceil(e.y / 5.0) * 5) + Math.ceil(e.x / 5) * 5;
+                                //return Math.ceil(this.y / 5.0) * 5;
+                            },
+                            remove: function () {
+                                if (!confirm('Seguro que quiere borrarlo?')) {
+                                    return false;
+                                }
+
+                            }
+                            // 'Dragging <b>' + this.series.name + '</b>, <b>' + this.category + '</b> to <b>' + Highcharts.numberFormat(e.y, 2) + '</b>');
+                        }
+                    },
+                    stickyTracking: false, events: {
+                        legendItemClick: function () {
+                            var s = this, series = s.chart.series;
+                            serieActual = s.index;
+                            // if (!this.visible) {
+                            //   alert(s.index);
+                            //} else {
+                            //  alert(s.index);
+                            //}
+                        }
+                    }
+                },
+                line: {
+                    cursor: 'ns-resize'
+                }
+            },
+            tooltip: {
+                //       pointFormat: '{series.name}: <b>{((point.y)/5.0)*5}</b><br/>'
+                //  yDecimals: 2,
+                //borderColor: '#2c3e50'
+                formatter: function () {
+                   return ' <b>' + this.series.name + '</b>, <b>' + '</b>' + '<br></br> X: ' + Highcharts.numberFormat(this.x, 0, '.', ',') + ' <br/> Y: ' + Math.ceil(this.y / 5.0) * 5;
+                }
+            },
+            exporting: {
+                //enabled: true,
+                showTable: true
+            },
+            series: [{
+                    name: 'UNO',
+                  //  borderWidth: 5,
+                    // showInLegend: false,
+                    draggableY: true,
+                    dragStepSizeY: 5,
+                    dragStepSize: 5,
+                    marker: {
+                        symbol: 'url(cuadrado.png)'
+                    },
+                    data: [],
+                    name: 'Conducción Aérea',
+                    color: '#DF2E08'
+                }]
+
+        });
+
+        //boton serie 2 
+        $('#botonuno').click(function () {
+            chart1.addSeries({
+                data: [],
+                dragStepSizeY: 5,
+                markerOptions: {
+                    style: "triangle"
+                },
+                name: 'Conducción Aérea (enmascaramiento)',
+                color: '#0829DF',
+                draggableY: true
+
+            });
+            serieActual = 1;
+
+            $(this).attr('disabled', true);
+
+        });
+
+        // button handler
+        //var y = 30;
+        var selectedPoints = chart1.getSelectedPoints();
+        $('#subiruno').click(function () {
+            y += 10;
+            //chart1.series[0].data[0].update(y);
+            //chart.
+        });
+
+        $('#bajaruno').click(function () {
+            var series = chart1.series[0];
+            if (series.data.length) {
+                chart1.series[0].data[0].remove();
+            }
+        });
+
+        //leyenda
+        $('#updateLegend').click(function (e) {
+            var legend = chart1.legend;
+
+            if (legend.display) {
+                legend.group.hide();
+                legend.box.hide();
+                legend.display = false;
+            } else {
+
+                legend.group.show();
+                legend.box.show();
+                legend.display = true;
+            }
+        });
+
+
+
+    </script>
+
+    <script type="text/javascript">
+
+        //oido izquierdo
+
+        var serieActual1 = 0;
+        var ser = 0;
+        //    var chart=Highcharts.chart('container', {
+        var chart4 = Highcharts.chart('container33', {
+            chart: {
+                type: 'scatter',
+                // margin: [70, 50, 60, 80],
+                events: {
+                    click: function (e) {
+
+                        //   var x = Math.round(e.xAxis[0].value / 0.5 )*5 , // var x = Math.round(e.xAxis[0].value),
+                        //        y = Math.round(e.yAxis[0].value / 0.5 )*5, //y = Math.round(e.yAxis[0].value),
+                        //       series = this.series[serieActual]; //series = this.series[serieActual];
+                        //series.addPoint([x, y]);
+
+                        //   var data = serie.data;
+                        // if (y > max) {
+                        //    max=y;
+                        //   series.addPoint([x, y]);
+                        //}
+
+                        // find the clicked values and the series
+                        var x = e.xAxis[0].value,
+                                y = e.yAxis[0].value,
+                                series = this.series[serieActual1];
+                        // round given click point to intervals
+                        x = Math.ceil(x / 5) * 5;    //5
+                        y = Math.ceil(y / 5) * 5;   //40
+                        // Add it   
+                        var max = 0;
+                        var min = series.data[series.data.length - 1].x;
+                        
+                        if (x > min) {
+                            // if (y != min) {
+                            //   if(y > min){
+                            //   max = x;
+                            series.addPoint([x, y]);
+                            // }
+                            //}
+                        } else {
+                            alert('Error jaja..x2');
+                        }
+                    }
+                }
+            },
+            title: {
+                text: 'PRUEBA - OIDO IZQUIERDO'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                //   minPadding: 0.2,
+                // maxPadding: 0.2,
+                //  maxZoom: 60,
+                min: 125,
+                max: 10000,
+
+                allowDecimals: false, // evita unidades decimales
+                opposite: true, //PARA PONER # ARRIBA :)
+                title: {
+                    text: 'FUERZA (HZ)'
+                },
+                //   tickmarkPlacement: 'on',
+                lineWidth: 2,
+                gridLineColor: '#197F07',
+                gridLineWidth: 1,
+                // categories: ['125', '250', '500', '1000', '1500', '2000', '3000', '4000', '6000', '8000', '10000', '']
+                tickPositions: [125, 250, 500, 1000, 1500, 2000, 3000, 4000, 6000, 8000, 10000]
+                        //   gridLineWidth: 1,
+                        // minPadding: 0.2,
+                        //maxPadding: 0.2,
+                        // maxZoom: 60
+            },
+            yAxis: {
+
+                minPadding: 0.2,
+                maxPadding: 0.2,
+                maxZoom: 60,
+                min: 0,
+                max: 120,
+                allowDecimals: false,
+                title: {
+                    text: 'DECIBELES (DBHL)'
+                },
+
+                lineWidth: 0,
+                gridLineColor: '#197F07',
+                gridLineWidth: 1,
+                // tickAmount: 9,
+
+                //   min: 0,
+                // max: 120,
+                //alignTicks: false,
+                // tickInterval: 5,
+
+                tickPositions: [120, 110, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0, -10]
+                        //categories: ['100', '90', '80', '70', '60', '50', '40', '30', '20', '10', '0']
+                        //minPadding: 0.2,
+                        //maxPadding: 0.2,
+                        // maxZoom: 60,
+
+            },
+            legend: {
+                enabled: true,
+                // align: 'left',
+                //verticalAlign: 'top',
+                borderWidth: 0
+
+            },
+            plotOptions: {
+                series: {
+                    //    pointPlacement: 'between',
+                    lineWidth: 1,
+                    allowPointSelect: true, // ojo
+                    dataLabels: {
+                        enabled: false   /// para saber el numero del punto
+                    },
+                    marker: {
+                        fillColor: '#FFFFFF',
+                        lineWidth: 2,
+                        lineColor: null
+                    },
+                    point: {
+                        events: {
+
+                            click: function () {
+                                if (this.series.data.length > 1) {
+                                    this.remove();
+                                }
+                            },
+                            drag: function (e) {
+                                $('#drag').html(
+                                        'Dragging <b>' + this.series.name + '</b>, <b>' + this.category + '</b>' + Math.ceil(e.y / 5.0) * 5) + Math.ceil(e.x / 5) * 5;
+                                //return Math.ceil(this.y / 5.0) * 5;
+                            },
+                            remove: function () {
+                                if (!confirm('Seguro que quiere borrarlo?')) {
+                                    return false;
+                                }
+
+                            }
+                            // 'Dragging <b>' + this.series.name + '</b>, <b>' + this.category + '</b> to <b>' + Highcharts.numberFormat(e.y, 2) + '</b>');
+                        }
+                    },
+                    stickyTracking: false, events: {
+                        legendItemClick: function () {
+                            var s = this, series = s.chart.series;
+                            serieActual1 = s.index;
+                            // if (!this.visible) {
+                            //   alert(s.index);
+                            //} else {
+                            //  alert(s.index);
+                            //}
+                        }
+                    },
+                    line: {
+                        cursor: 'ns-resize'
+                    }
+                },
+                line: {
+                    cursor: 'ns-resize'
+                }
+            },
+            tooltip: {
+                //       pointFormat: '{series.name}: <b>{((point.y)/5.0)*5}</b><br/>'
+                //  yDecimals: 2,
+                //borderColor: '#2c3e50'
+                formatter: function () {
+                    return ' <b>' + this.series.name + '</b>, <b>' + '</b>' + '<br></br> X: ' + Highcharts.numberFormat(this.x, 0, '.', ',') + ' <br/> Y: ' + Math.ceil(this.y / 5.0) * 5;
+                    // return Highcharts.numberFormat(this.x, 0, '.', ',') + ' cm,<br/>' + Highcharts.numberFormat(this.y, 0, '.', ',') + ' kg';
+                    ser = Math.ceil(this.y / 5.0) * 5;
+                }
+            },
+            exporting: {
+                //enabled: true,
+                showTable: true
+
+            },
+            series: [{
+
+                    name: 'UNO',
+                    // showInLegend: false,
+                    draggableY: true,
+                    // pointInterval: 2,
+                    //step: 'UNO',
+                    markerOptions: {
+                        style: "circle"
+                    },
+                    //visible: false
+                    //data: [[20, 20], [20, 20]]
+
+                    data: [30],
+                    // data: [30, 70,50,120],
+
+                    marker: {
+                        symbol: 'url(cuadradoazul.png)'
+                    },
+                    name: 'Conducción Aérea',
+                    color: '#0829DF' //rojo
+
+                            //data: [[125,90],[1000,10]]
+                }]
+
+        });
+
+        //boton serie 2 
+        $('#botonuno1').click(function () {
+            chart4.addSeries({
+                data: [40],
+                draggableY: true,
+                color: '#DF2E08', //azul
+                name: 'Conducción Aérea (enmascaramiento)',
+                marker: {
+                    symbol: 'url(equisroja.png)'
+                },
+
+            });
+            serieActual1 = 1;
+
+            $(this).attr('disabled', true);
+
+        });
+
+        // button handler
+        //var y = 30;
+        var selectedPoints = chart4.getSelectedPoints();
+        $('#subiruno1').click(function () {
+            y += 10;
+            //chart1.series[0].data[0].update(y);
+            //chart.
+        });
+
+        $('#bajaruno1').click(function () {
+            var series = chart4.series[0];
+            if (series.data.length) {
+                chart4.series[0].data[0].remove();
+            }
+        });
+
+        //leyenda
+        $('#updateLegend1').click(function (e) {
+            var legend = chart4.legend;
+
+            if (legend.display) {
+                legend.group.hide();
+                legend.box.hide();
+                legend.display = false;
+            } else {
+
+                legend.group.show();
+                legend.box.show();
+                legend.display = true;
+            }
+        });
+
+
+
+    </script>
+
+
+
+    <script>
+        //oido derecho
+
+        var serieActual = 0;
+        //    var chart=Highcharts.chart('container', {
+        var chart2 = Highcharts.chart('container1', {
+            chart: {
+                type: 'scatter',
+                // margin: [70, 50, 60, 80],
+                events: {
+                    click: function (e) {
+                        // find the clicked values and the series
+                        var x = Math.round(e.xAxis[0].value),
+                                y = Math.round(e.yAxis[0].value),
+                                series = this.series[serieActual];
+
+                        // Add it
+                        series.addPoint([x, y]);
+
+                    },
+                    /// ondblclick: function (f) {
+
+                    //  var x = Math.round(f.xAxis[0].value),
+                    //        y = Math.round(f.yAxis[0].value),
+                    //      series = this.series[0];
+                    //series.addPoint([x, y]);
+                    //}
+                }
+            },
+            title: {
+                text: 'PRUEBA - OIDO IZQUIERDO'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                title: {
+                    text: 'FUERZA '
+                },
+                lineWidth: 2,
+                gridLineColor: '#197F07',
+                gridLineWidth: 1,
+                //categories: ['125', '250', '500', '1000', '1500', '2000', '3000', '4000', '6000', '8000', '10000']
+                categories: ['125', '250', '500', '1000', '1500', '2000', '3000', '4000', '6000', '8000', '10000', '']
+                        //   gridLineWidth: 1,
+                        // minPadding: 0.2,
+                        //maxPadding: 0.2,
+                        // maxZoom: 60
+            },
+            yAxis: {
+                title: {
+                    text: 'DECIVELES'
+                },
+                lineWidth: 0,
+                gridLineColor: '#197F07',
+                gridLineWidth: 1,
+                tickAmount: 9,
+                //categories: ['100', '90', '80', '70', '60', '50', '40', '30', '20', '10', '0']
+                //minPadding: 0.2,
+                //maxPadding: 0.2,
+                // maxZoom: 60,
+
+            },
+            legend: {
+                enabled: true,
+                align: 'left',
+                verticalAlign: 'top',
+                borderWidth: 0
+            },
+            exporting: {
+                enabled: true
+            },
+            plotOptions: {
+                series: {
+                    lineWidth: 1,
+                    marker: {
+                        fillColor: '#FFFFFF',
+                        lineWidth: 2,
+                        lineColor: null // inherit from series
+                    },
+                    point: {
+                        events: {
+                            drag: function (e) {
+                                $('#drag').html(
+                                        'Dragging <b>' + this.series.name + '</b>, <b>' + this.category + '</b> to <b>' + Highcharts.numberFormat(e.y, 2) + '</b>');
+                            }
+
+                        }
+                    },
+                    stickyTracking: false, events: {
+                        legendItemClick: function () {
+                            var s = this, series = s.chart.series;
+                            serieActual = s.index;
+                            // if (!this.visible) {
+                            //   alert(s.index);
+                            //} else {
+                            //  alert(s.index);
+                            //}
+                        }
+                    }
+                },
+                line: {
+                    cursor: 'ns-resize'
+                }
+            },
+            tooltip: {
+                yDecimals: 2
+            },
+            legend: {
+                enabled: true
+            },
+            series: [{
+                    name: 'UNO',
+                    // showInLegend: false,
+                    draggableY: true,
+                    // pointInterval: 2,
+                    //step: 'UNO',
+                    // markerOptions: {style: "triangle"},
+                    //visible: false
+                    //
+                    //data: [[20, 20], [20, 20]]
+                    marker: {
+                        symbol: 'url(cuadradoazul.png)'
+                    },
+                    data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+                    name: 'Conducción Aérea',
+                    color: '#0829DF'
+                            //0829DF- DF2E08
+                }]
+
+        });
+
+        //boton serie 2 
+        $('#botondos1').click(function () {
+
+            chart2.addSeries({
+                data: [216.4, 285.5, 405.3],
+                draggableY: true,
+                color: '#DF2E08',
+                name: 'Conducción Aérea (enmascaramiento)',
+                marker: {
+                    symbol: 'url(equisroja.png)'
+                },
+
+            });
+            serieActual = 1;
+
+            $(this).attr('disabled', true);
+            //chart.series.addPoint([x, y]);
+
+        });
+    </script>
+
+    <script>
+        //document.getElementById("boton1").onclick = ids;
+        Highcharts.chart('container11', {
+            chart: {
+                type: 'scatter',
+                // margin: [70, 50, 60, 80],
+                events: {
+                    click: function (e) {
+                        // find the clicked values and the series
+                        var x = Math.round(e.xAxis[0].value),
+                                y = Math.round(e.yAxis[0].value),
+                                series = this.series[0];
+
+                        // Add it
+                        series.addPoint([x, y]);
+
+                    },
+                    ondblclick: function (e) {
+                        // find the clicked values and the series
+                        var x = Math.round(e.xAxis[0].value),
+                                y = Math.round(e.yAxis[0].value),
+                                series = this.series[1];
+
+                        // Add it
+                        series.addPoint([x, y]);
+
+                    }
+                }
+            },
+            title: {
+                text: 'PRUEBA -  OIDO ixquierdo '
+            },
+            subtitle: {
+                text: ''
+            },
+
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: true
+            },
+            plotOptions: {
+                series: {
+                    lineWidth: 1,
+                    point: {
+                        events: {
+                            click: function () {
+                                if (this.series.data.length > 1) {
+                                    this.remove();
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            xAxis: {
+                title: {
+                    text: 'FUERZA'
+                },
+                lineWidth: 2,
+                gridLineColor: '#197F07',
+                gridLineWidth: 1,
+                categories: ['125', '250', '500', '1000', '1500', '2000', '3000', '4000', '6000', '8000', '10000', '']
+            },
+            yAxis: {
+                title: {
+                    text: 'DECIBELES'
+                },
+                lineWidth: 2,
+                gridLineColor: '#197F07',
+                gridLineWidth: 1,
+                tickAmount: 9,
+                //  tickPixelInterval: 1,
+                //     categories: ['100', '90', '80', '70', '60', '50', '40', '30', '20', '10', '0', '']
+            },
+            series: [{
+                    data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+                }, {
+                    data: [19.9, 21.5, 86.4, 119.2, 124.0, 106.0, 115.6]
+                }]
+
+        });
+
+    </script>
+
+    <script>
+        // create the chart
+        var serieActual = 0;
+        var chart = Highcharts.chart('container3', {
+            chart: {
+                events: {
+                    //addSeries: function () {
+                    //  var label = this.renderer.label('A series was added, about to redraw chart', 10, 120)
+                    //            .attr({
+                    //                  fill: Highcharts.getOptions().colors[0],
+                    //                    padding: 10,
+                    //                      r: 5,
+                    //                        zIndex: 8
+                    //                      })
+                    //                        .css({
+                    //                              color: '#FFFFFF'
+                    //                            })
+                    //                              .add();
+//
+                    //setTimeout(function () {
+                    //    label.fadeOut();
+                    //  }, 1000);
+                    //},
+                    click: function (e) {
+                        // find the clicked values and the series
+
+                        var x = Math.round(e.xAxis[0].value);
+                        var y = Math.round(e.yAxis[0].value);
+                        var series = this.series[serieActual];
+
+                        // Add it
+                        series.addPoint([x, y]);
+
+                    }
+                    //
+                }
+            },
+            plotOptions: {
+                series: {
+                    lineWidth: 1,
+                    point: {
+                        events: {
+                            drag: function (e) {
+                                $('#drag').html(
+                                        'Dragging <b>' + this.series.name + '</b>, <b>' + this.category + '</b> to <b>' + Highcharts.numberFormat(e.y, 2) + '</b>');
+                            }
+
+                        }
+                    },
+                    stickyTracking: false, events: {
+                        legendItemClick: function () {
+                            var s = this, series = s.chart.series;
+                            serieActual = s.index;
+                            // if (!this.visible) {
+                            //   alert(s.index);
+                            //} else {
+                            //  alert(s.index);
+                            //}
+                        }
+                    }
+                },
+                line: {
+                    cursor: 'ns-resize'
+                }
+            },
+            tooltip: {
+                yDecimals: 2
+            },
+            title: {
+                text: 'PRUEBA -  OIDO '
+            },
+            xAxis: {
+                title: {
+                    text: 'FUERZA'
+                },
+                lineWidth: 2,
+                gridLineColor: '#197F07',
+                gridLineWidth: 1,
+                categories: ['125', '250', '500', '1000', '1500', '2000', '3000', '4000', '6000', '8000', '10000', '']
+            },
+            yAxis: {
+                title: {
+                    text: 'DECIBELES'
+                },
+                lineWidth: 2,
+                gridLineColor: '#197F07',
+                gridLineWidth: 1,
+                tickAmount: 9,
+                //  tickPixelInterval: 1,
+                //     categories: ['100', '90', '80', '70', '60', '50', '40', '30', '20', '10', '0', '']
+            },
+            legend: {
+                enabled: true
+            },
+
+            series: [{
+                    showInLegend: false,
+                    data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+                    draggableY: true,
+
+                }]
+        });
+
+
+// activate the button
+        $('#button').click(function () {
+            chart.addSeries({
+                data: [216.4, 285.5, 405.3],
+                draggableY: true
+
+            });
+            serieActual = 1;
+
+            $(this).attr('disabled', true);
+            //chart.series.addPoint([x, y]);
+
+        });
+
+    </script>
+
+
+
+
+    <h:head>
+        <title>Audiometría</title>
+    </h:head>
+
+    <h:body>
+       <!-- <p:chart id="grafico3" type="line" model="#{grafico.linealModel}" style="height: 500 px; width: 500px"></p:chart>-->
+
+        <center>
+            <table border="1">
+
+                <tr>
+
+                    <td rowspan="3"><p:chart id="grafico1" type="line" model="#{linea.lineModel1}" style="height: 500 px; width: 500px"></p:chart></td>
+                    <th>OPCIONES</th>
+                    <td rowspan="3"><p:chart id="grafico2" type="line" model="#{linea.lineModel2}" style="height: 500 px; width: 500px"></p:chart></td>
+                    <th>OPCIONES</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center>
+                            <p:button icon="fa-neuter" value="Opcion Uno" style="text-decoration: sss;
+                                      padding: 5px;
+                                      font-weight: 600;
+                                      font-size: 10px;
+                                      color: #ffffff;
+                                      background-color: #1883ba;
+                                      border-radius: 6px;
+                                      border: 2px solid #0016b0;"> </p:button>
+                            <br></br>
+                            <br></br>
+                            <p:commandButton type="button" icon = "fa-neuter" value="Opcion Dos" style="text-decoration: sss;
+                                             padding: 5px;
+                                             font-weight: 600;
+                                             font-size: 10px;
+                                             color: #ffffff;
+                                             background-color: #1883ba;
+                                             border-radius: 6px;
+                                             border: 2px solid #0016b0;"></p:commandButton>
+                        </center>
+                    </td>
+                    <td>
+                        <center>
+                            <p:button icon="fa-neuter" value="Opcion Uno" style="text-decoration: sss;
+                                      padding: 5px;
+                                      font-weight: 600;
+                                      font-size: 10px;
+                                      color: #ffffff;
+                                      background-color: #1883ba;
+                                      border-radius: 6px;
+                                      border: 2px solid #0016b0;"> </p:button>
+                            <br></br>
+                            <br></br>
+                            <p:commandButton type="button" icon = "fa-neuter" value="Opcion Dos" style="text-decoration: sss;
+                                             padding: 5px;
+                                             font-weight: 600;
+                                             font-size: 10px;
+                                             color: #ffffff;
+                                             background-color: #1883ba;
+                                             border-radius: 6px;
+                                             border: 2px solid #0016b0;"></p:commandButton>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+        </center>
+
+    </h:body>
+</html>

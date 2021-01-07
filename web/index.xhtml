@@ -6,21 +6,21 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       >
     <!-- <script src="https://code.highcharts.com/highcharts.js"></script>-->
-    <script src="highcharts.js"></script>
+    <script src="javascript/highcharts.js"></script>
     <!--<script src="https://code.highcharts.com/modules/exporting.js"></script>-->
-    <script src="exporting.js"></script>
+    <script src="javascript/exporting.js"></script>
     <!--<script src="https://code.highcharts.com/modules/export-data.js"></script>-->
-    <script src="export-data.js"></script>
+    <script src="javascript/export-data.js"></script>
     <!--<script src="https://rawgithub.com/highcharts/draggable-points/master/draggable-points.js"></script>-->
     <!--<script src="draggable-points.js"></script>-->
     <!--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
-    <script src="jquery-3.1.1.min.js"></script> 
+    <script src="javascript/jquery-3.1.1.min.js"></script> 
 
     <!--<script src="https://code.highcharts.com/modules/data.js"></script>-->
      
 
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
-    <script src="data.js"></script>
+    <script src="javascript/data.js"></script>
     <script src="https://rawgit.com/Ondkloss/draggable-points/dynamic-drag-and-drag-steps/draggable-points.js"></script>
     <script src="https://rawgithub.com/highslide-software/draggable-points/master/draggable-points.js"></script>
     <script src="https://rawgithub.com/highcharts/draggable-points/master/draggable-points.js"></script>
@@ -39,7 +39,7 @@
         <table border="0">
 
 
-            <TR colspan="4"> <h1>AUDIOMETRÍA</h1></TR>
+            <TR colspan="4"> <h1>AUDIOMETRÍA - PRUEBA</h1></TR>
 
             <tr>
 
@@ -306,11 +306,11 @@
                     dragStepSizeY: 5,
                     dragStepSize: 5,
                     marker: {
-                        symbol: 'url(cuadrado.png)'
+                        symbol: 'url(images/cuadrado1.png)'
                     },
                     data: [],
                     name: 'Conducción Aérea',
-                    color: '#DF2E08'
+                    color: '#c82907 '
                 }]
 
         });
@@ -570,7 +570,7 @@
                     // data: [30, 70,50,120],
 
                     marker: {
-                        symbol: 'url(cuadradoazul.png)'
+                        symbol: 'url(images/cuadradoazul.png)'
                     },
                     name: 'Conducción Aérea',
                     color: '#0829DF' //rojo
@@ -758,7 +758,7 @@
                     //
                     //data: [[20, 20], [20, 20]]
                     marker: {
-                        symbol: 'url(cuadradoazul.png)'
+                        symbol: 'url(images/cuadradoazul.png)'
                     },
                     data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
                     name: 'Conducción Aérea',
@@ -1005,15 +1005,13 @@
     <h:body>
        <!-- <p:chart id="grafico3" type="line" model="#{grafico.linealModel}" style="height: 500 px; width: 500px"></p:chart>-->
 
-        <center>
+        <center>           
             <table border="1">
-
                 <tr>
-
                     <td rowspan="3"><p:chart id="grafico1" type="line" model="#{linea.lineModel1}" style="height: 500 px; width: 500px"></p:chart></td>
                     <th>OPCIONES</th>
                     <td rowspan="3"><p:chart id="grafico2" type="line" model="#{linea.lineModel2}" style="height: 500 px; width: 500px"></p:chart></td>
-                    <th>OPCIONES</th>
+                    <th>OPCIONES</th>    
                 </tr>
 
                 <tr>
@@ -1029,7 +1027,7 @@
                                       border: 2px solid #0016b0;"> </p:button>
                             <br></br>
                             <br></br>
-                            <p:commandButton type="button" icon = "fa-neuter" value="Opcion Dos" style="text-decoration: sss;
+                            <p:commandButton type="button" icon = "fa-neuter" value="Opcion Dos!" style="text-decoration: sss;
                                              padding: 5px;
                                              font-weight: 600;
                                              font-size: 10px;
